@@ -3,43 +3,37 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
+
+use App\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VenueController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		echo 'hämtar alla venues';
+		$Venue=Venue::all();
+
+        var_dump(json_encode($Venue));
 	}
 
 
 	public function getVenueById($id)
 	{
-		echo 'hämtar venue per id='.$id;
-	}
+        $Venue=Venue::find($id);
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
+            var_dump(json_encode($Venue));
+
+	}
 	public function getVenueByName($name)
 	{
-		echo 'hämtar venue per namn='.$name;
+       $Venue_name=Venue::find($name);
+       var_dump(json_encode($Venue_name));
+
+		//echo 'hämtar venue per namn='.$name;
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function getVenueByCity($city)
 	{
 		echo 'hämtar alla venue per city='.$city;

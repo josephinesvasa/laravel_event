@@ -1,51 +1,30 @@
 <?php namespace App\Http\Controllers;
 
+use App\Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		echo 'här dumpas alla event ut';
+        $Event=Event::all();
+
+        var_dump(json_encode($Event));
+
+
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function getEventById($id)
 	{
-        echo 'hör hämtar du event by id='.$id;
+        $Event=Event::find($id);
+        var_dump(json_encode($Event));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function getEventByType($type)
 	{
 		echo 'Här hämtar du event by type='.$type;
@@ -70,12 +49,5 @@ class EventController extends Controller {
     {
         echo 'här hämtar du event by ticket_uri='.$ticket_uri;
     }
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 
 }
