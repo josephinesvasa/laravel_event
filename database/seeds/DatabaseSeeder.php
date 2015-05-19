@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		 $this->call('UserTableSeeder');
-        $this->call('CategoryTableSeeder');
+        $this->call('EventTableSeeder');
+        $this->call('Event_ArtistTableSeeder');
+        $this->call('VenueTableSeeder');
+        $this->call('ArtistTableSeeder');
 	}
 
 }
