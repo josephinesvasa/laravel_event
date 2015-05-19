@@ -27,27 +27,28 @@ class EventController extends Controller {
 
 	public function getEventByType($type)
 	{
-		echo 'Här hämtar du event by type='.$type;
+        $type=Event::where('event_type', 'LIKE', '%'.$type.'%')->get();
+        var_dump(json_encode($type));
 	}
 
     public function getEventByDate($date)
     {
-        echo 'här hämtar du event by date='.$date;
+        $date=Event::where('event_date', 'LIKE', '%'.$date.'%')->get();
+        var_dump(json_encode($date));
     }
 
     public function getEventByTime($time)
     {
-        echo 'här hämtar du event by time='.$time;
+        $time=Event::where('event_time', 'LIKE', '%'.$time.'%')->get();
+        var_dump(json_encode($time));
     }
 
     public function getEventByTitle($title)
     {
-        echo 'här hämtar du event by title='.$title;
+        $title=Event::where('event_title', 'LIKE', '%'.$title.'%')->get();
+        var_dump(json_encode($title));
     }
 
-    public function getEventByTicketUri($ticket_uri)
-    {
-        echo 'här hämtar du event by ticket_uri='.$ticket_uri;
-    }
+
 
 }

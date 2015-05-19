@@ -21,13 +21,14 @@ class ArtistController extends Controller {
 	{
         $Artists=Artist::find($id);
         var_dump(json_encode($Artists));
-		//echo 'här visas artist per id='. $id;
+
 	}
 
 
 	public function getArtistByName($name)
 	{
-		echo 'här visas artist per namn='.$name;
+        $name=Artist::where('artist_name', 'LIKE', '%'.$name.'%')->get();
+        var_dump(json_encode($name));
 	}
 
 
