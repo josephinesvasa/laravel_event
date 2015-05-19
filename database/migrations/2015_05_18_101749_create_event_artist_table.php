@@ -14,9 +14,10 @@ class CreateEventArtistTable extends Migration {
 	{
         Schema::create('event_artists', function(Blueprint $table)
         {
-            $table->integer('event_id');
-            $table->integer('artist_id');
-
+            $table->unsignedInteger('event_id');
+            $table->unsignedInteger('artist_id');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('artist_id')->references('id')->on('artists');
             //$table->rememberToken();
             $table->timestamps();
         });
@@ -29,7 +30,7 @@ class CreateEventArtistTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+        Schema::drop('event_artists');
 	}
 
 }

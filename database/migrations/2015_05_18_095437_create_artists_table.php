@@ -14,12 +14,13 @@ class CreateArtistsTable extends Migration {
 	{
         Schema::create('artists', function(Blueprint $table)
         {
-            $table->integer('artist_id')->primary()->increment();
-            $table->integer('artist_org_id');
+            $table->increments('id');
+            $table->unsignedInteger('artist_org_id');
             $table->text('artist_image');
             $table->string('artist_name', 160);
             //$table->rememberToken();
             $table->timestamps();
+
         });
 	}
 
@@ -30,7 +31,7 @@ class CreateArtistsTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('users');
+        Schema::drop('artists');
 	}
 
 }
