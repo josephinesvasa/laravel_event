@@ -3,9 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-
-
 use App\Venue;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
