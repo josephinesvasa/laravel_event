@@ -9,6 +9,6 @@ class Venue extends Model  {
 
     protected $table = 'venues';
 
-   
+
 }
 

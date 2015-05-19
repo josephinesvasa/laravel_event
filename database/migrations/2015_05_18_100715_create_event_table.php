@@ -15,18 +15,21 @@ class CreateEventTable extends Migration {
 	{
         Schema::create('events', function(Blueprint $table)
         {
-            $table->integer('event_id')->primary()->increment();
-            $table->integer('event_org_id');
-            $table->dateTime('event_date');
-            $table->dateTime('event_time');
+            $table->increments('id');
+            $table->unsignedInteger('event_org_id');
+            $table->date('event_date');
+            $table->string('event_time');
             $table->string('event_type');
             $table->string('event_age_restr');
             $table->text('event_title');
             $table->text('event_ticket_uri');
             $table->float('event_popularity');
+            $table->unsignedInteger('venue_id');
+            $table->foreign('venue_id')->references('id')->on('venues');
             //$table->foreign('venue_id')->references('venue_id')->on('venues');
             //$table->rememberToken();
             $table->timestamps();
+
         });
 	}
 

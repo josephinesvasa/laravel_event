@@ -18,14 +18,21 @@ Route::get('artist/name/{name}','ArtistController@getArtistByName', function($na
 
 //Event route
 Route::get('/event', 'EventController@index');
+
 Route::get('event/type/{type}','EventController@getEventByType', function($type)
 {
     return $type;
 });
+
+Route::get('event/id/{id}','EventController@getEventById', function($id)
+{
+    return $id;
+})->where('id', '[0-9]+');
+
 Route::get('event/date/{date}','EventController@getEventByDate', function($date)
 {
     return $date;
-})->where('id', '[0-9]+');
+})->where('date', '[0-9]+');
 
 Route::get('event/time/{time}','EventController@getEventByTime', function($time)
 {
