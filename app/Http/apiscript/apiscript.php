@@ -21,7 +21,7 @@ function getDateTomorrow(){
 
 function backupDelete()
 {
-    $db = new PDO("mysql:host=localhost;dbname=event_laravel", "root", "");
+    $db = new PDO("mysql:host=localhost;dbname=event_laravel;charset=utf8", "root", "");
     $length = 5;
     $available = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $chlength = strlen($available);
@@ -116,7 +116,7 @@ function getGoogleMapImage($latlng)
 
 function insertDbAction($data)
 {
-    $db = new PDO("mysql:host=localhost;dbname=event_laravel", "root", "");
+    $db = new PDO("mysql:host=localhost;dbname=event_laravel;charset=utf8", "root", "");
     for ($i = 0; $i < count($data); $i++) {
         //venue
         $venue_org_id = $data[$i]['venue']['id'];

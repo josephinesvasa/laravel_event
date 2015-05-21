@@ -42,12 +42,24 @@ class EventController extends Controller {
             ->get();
 
         foreach($ev as $event){
-            $events=Array('event_id'=>$event->id, 'event_title'=>$event->event_title);
-
+            $events=Array(
+                'event_id'=>$event->id,
+                'event_title'=>$event->event_title,
+                'event_date'=>$event->event_date,
+                'event_time'=>$event->event_time,
+                'event_type'=>$event->event_type,
+                'event_age_restriction'=>$event->event_age_restr,
+                'event_tickets'=>$event->event_ticket_uri,
+                'event_popularity'=>$event->event_popularity,
+            );
+            $events['venue'][]=Array('venue_id'=>$event->venue_id, 'venue_name'=>$event->venue_name);
             foreach($artists as $artist){
                 if($artist->event_id==$event->id){
-                    $events['artists'][]=Array('artist_name'=>$artist->artist_name);
-
+                    $events['artists'][]=Array(
+                        'artist_id'=>$artist->id,
+                        'artist_name'=>$artist->artist_name,
+                        'artist_image'=>$artist->artist_image
+                    );
                 }
             }
                 print_r(json_encode($events, JSON_PRETTY_PRINT));
