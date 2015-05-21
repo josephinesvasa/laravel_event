@@ -62,10 +62,11 @@ class EventController extends Controller {
                     );
                 }
             }
-                print_r(json_encode($events, JSON_PRETTY_PRINT));
+                $all_events['event'][]=($events);
+
 
         }
-
+        print_r(json_encode($all_events, JSON_PRETTY_PRINT));
     }
 	public function getEventById($id)
 	{
