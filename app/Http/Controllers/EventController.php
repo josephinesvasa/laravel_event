@@ -66,7 +66,7 @@ class EventController extends Controller {
 
 
         }
-        print_r(json_encode($all_events, JSON_PRETTY_PRINT));
+        return response()->json($all_events);
     }
 	public function getEventById($id)
 	{
