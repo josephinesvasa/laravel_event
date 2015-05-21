@@ -2,6 +2,8 @@
 
 //home route
 Route::get('/','HomeController@index');
+
+Route::get('event/all','EventController@getAll');
 //artist route
 
 Route::get('/artist', 'ArtistController@index');
