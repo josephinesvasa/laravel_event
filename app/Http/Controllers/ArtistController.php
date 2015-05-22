@@ -12,15 +12,20 @@ class ArtistController extends Controller {
 	public function index()
 	{
         $Artists=Artist::all();
+        foreach($Artists as $art){
+            $all_artists['artist'][]=($art);
+        }
 
-       var_dump(json_encode($Artists));
+        return response()->json($all_artists);
+
 
     }
 
 	public function getArtistById($id)
 	{
         $Artists=Artist::find($id);
-        var_dump(json_encode($Artists));
+        $all_artists['artist'][]=($Artists);
+        return response()->json($Artists);
 
 	}
 
