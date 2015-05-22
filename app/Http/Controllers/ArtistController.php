@@ -20,7 +20,10 @@ class ArtistController extends Controller {
 	public function getArtistById($id)
 	{
         $Artists=Artist::find($id);
-        var_dump(json_encode($Artists));
+
+        $all_artists['artist'][]=($Artists);
+
+        return response()->json($all_artists);
 
 	}
 
