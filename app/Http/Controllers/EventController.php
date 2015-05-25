@@ -38,7 +38,7 @@ class EventController extends Controller {
 
         $ev=Event::join('venues', 'venue_id', '=', 'venues.id')
             ->select('events.id', 'event_date', 'event_time', 'event_type', 'event_age_restr',
-                'event_title', 'event_ticket_uri','event_popularity', 'venue_id','venue_name')
+                'event_title', 'event_ticket_uri','event_popularity', 'venue_id','venue_name', 'venue_map', 'venue_map_image')
             ->orderBy('event_date', 'ASC')
             ->orderBy('event_time', 'ASC')
             ->get();
@@ -54,7 +54,7 @@ class EventController extends Controller {
                 'event_tickets'=>$event->event_ticket_uri,
                 'event_popularity'=>$event->event_popularity,
             );
-            $events['venue'][]=Array('venue_id'=>$event->venue_id, 'venue_name'=>$event->venue_name);
+            $events['venue'][]=Array('venue_id'=>$event->venue_id, 'venue_name'=>$event->venue_name, 'venue_map'=>$event->venue_map, 'venue_map_image'=>$event->venue_map_image);
             foreach($artists as $artist){
                 if($artist->event_id==$event->id){
                     $events['artists'][]=Array(
