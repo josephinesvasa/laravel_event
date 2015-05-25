@@ -162,16 +162,20 @@ function insertDbAction($data)
         $event_date = $data[$i]['start']['date'];
         $event_time = $data[$i]['start']['time'];
         if ($event_time == "") {
-            $event_time = "Tid ej satt";
+            $event_time = "Ej satt";
         }
         $event_type = $data[$i]['type'];
         $event_age_restr = $data[$i]['ageRestriction'];
         if ($event_age_restr == "") {
-            $event_age_restr = "Ingen åldergräns";
+            $event_age_restr = "Ej satt";
         }
         $event_title = $data[$i]['displayName'];
         $event_ticket_uri = $data[$i]['uri'];
         $event_popularity = $data[$i]['popularity'];
+        $event_popularity = $event_popularity*100;
+        if($event_popularity < 0.01){
+            $event_popularity = 0.01;
+        }
         $stm_insert_event = $db->prepare("insert into events
                (event_org_id, event_date, event_time, event_type, event_age_restr, event_title, event_ticket_uri, event_popularity, venue_id)
                 VALUES
