@@ -26,10 +26,10 @@ class ArtistController extends Controller
     {
         $Artists = Artist::find($id);
 
-        $all_artists['artist'][] = ($Artists);
         return response()->json($Artists);
 
     }
+
 
     public function getArtistByName($name)
     {

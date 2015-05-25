@@ -68,6 +68,26 @@ class EventController extends Controller {
         }
         return response()->json($all_events);
     }
+
+    public function getArtistsByEventId($id){
+        $art=Artist::join('event_artists', 'artist_id','=', 'artists.id')
+            ->join('events', 'event_id', '=', 'events.id')
+            ->select('artists.id','artist_name', 'artist_image', 'event_id')
+            ->where('event_id','=',$id)
+            ->get();
+
+
+        $artists=Array();
+
+        foreach($art as $artist){
+                $artists['artists'][]=Array(
+                    'artist_id'=>$artist->id,
+                    'artist_name'=>$artist->artist_name,
+                    'artist_image'=>$artist->artist_image
+                );
+            }
+        return response()->json($artists);
+    }
 	public function getEventById($id)
 	{
         $Event=Event::find($id);
