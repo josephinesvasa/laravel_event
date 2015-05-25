@@ -39,6 +39,8 @@ class EventController extends Controller {
         $ev=Event::join('venues', 'venue_id', '=', 'venues.id')
             ->select('events.id', 'event_date', 'event_time', 'event_type', 'event_age_restr',
                 'event_title', 'event_ticket_uri','event_popularity', 'venue_id','venue_name')
+            ->orderBy('event_date', 'ASC')
+            ->orderBy('event_time', 'ASC')
             ->get();
 
         foreach($ev as $event){
