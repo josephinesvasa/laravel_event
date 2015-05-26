@@ -19,7 +19,7 @@ class VenueController extends Controller {
 
 	public function getVenueById($id)
 	{
-        $Venue=Venue::find($id);
+            $Venue=Venue::find($id);
             var_dump(json_encode($Venue));
 
 	}

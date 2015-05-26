@@ -27,6 +27,11 @@ Route::get('event/artists/{id}','EventController@getArtistsByEventId', function(
 {
     return $id;
 })->where('id', '[0-9]+');
+Route::get('event/venue/{id}','EventController@getVenueByEventID', function($id)
+{
+    return $id;
+})->where('id', '[0-9]+');
+
 
 
 Route::get('event/type/{type}','EventController@getEventByType');
