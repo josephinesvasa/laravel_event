@@ -90,6 +90,27 @@ class EventController extends Controller {
             }
         return response()->json($artists);
     }
+    public function getVenueByEventID($id){
+        $ven=Venue::join('events', 'venue_id','=', 'venues.id')
+            ->select('events.id','venue_id','venue_name', 'venue_map', 'venue_map_image', 'venue_adress')
+            ->where('events.id','=',$id)
+            ->get();
+
+
+        $venues=Array();
+
+        foreach($ven as $venue){
+            $venues['venue'][]=Array(
+                'venue_id'=>$venue->venue_id,
+                'venue_name'=>$venue->venue_name,
+                'venue_adress'=>$venue->venue_adress,
+                'venue_map'=>$venue->venue_map,
+                'venue_map_image'=>$venue->venue_map_image
+
+            );
+        }
+        return response()->json($venues);
+    }
 	public function getEventById($id)
 	{
         $Event=Event::find($id);
