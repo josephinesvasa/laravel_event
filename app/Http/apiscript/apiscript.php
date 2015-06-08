@@ -128,10 +128,10 @@ function insertDbAction($data)
             $venue_map_image = getGoogleMapImage($latlng);
             usleep(500000);
         } else {
-            $venue_adress = 'Okänd';
+            $venue_adress = 'Adress ej angett';
             $latlng = 'Okänd';
-            $venue_map = 'Okänd';
-            $venue_map_image = 'Okänd';
+            $venue_map = 'https://www.google.se/maps/place/Stockholm/@59.326142,17.9875454,11z/data=!3m1!4b1!4m2!3m1!1s0x465f763119640bcb:0xa80d27d3679d7766';
+            $venue_map_image = 'http://maps.googleapis.com/maps/api/staticmap?center=59.326142,18.0575454&zoom=10&size=620x260&sensor=false&markers=color%3A0xf80046%7C59.326142,18.057454';
         }
         $venue_city = $data[$i]['venue']['metroArea']['displayName'];
         $stm_check_venue = $db->prepare("select venue_org_id, id from venues where venue_org_id=:venue_org_id");
